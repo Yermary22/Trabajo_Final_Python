@@ -1,0 +1,45 @@
+{% extends "AppsServicios/plantilla_base_2.html" %}
+{% load static %}
+
+<!-- RESULTADO DE BUSQUEDA PARA CONTACTO -->
+
+{% block blockname %}
+    <br>
+    <p class="text-center"><img class="img-fluid rounded mb-5 mb-lg-0" src="" alt="..." /></p>
+    <hr>
+    <br>
+    <br>
+    <h2 class="text-center"> BUSQUEDA </h2>
+
+    <p>Resultados de la busqueda para: {{nombre}}</p>
+        
+        {% if contacto %}
+        <center>
+        <table class="table table-striped">
+            <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Apellido</th>
+                <th class="text-center">Email</th>
+      
+            </tr>
+                {% for resultado in contacto %}
+            <tr>
+                <td>{{resultado.nombre}}</td>
+                <td>{{resultado.apellido}}</td>
+                <td>{{resultado.email}}</td>
+                              
+            </tr>
+                {% endfor %}
+            </table>
+        </center>
+
+        {% else %}
+            <p class="text-center"><b>Sin resultados</b>
+            
+            </p>
+            {% endif %}
+    
+            <p><a href="{% url 'contactos' %}" class="btn btn-outline-primary" disabled> VOLVER </a></p>
+ 
+
+{% endblock blockname %}

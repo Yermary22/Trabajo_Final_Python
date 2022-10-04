@@ -1,0 +1,15 @@
+
+{% extends "AppsServicios/plantilla_base_2.html" %}
+
+{% block blockname %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    
+    
+    <input type="submit"name="Enviar" />
+</form>
+
+<p><a href="{% url 'inicio' %}" class="btn btn-outline-primary" disabled> VOLVER </a></p>
+{% endblock blockname %} 

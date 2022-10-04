@@ -1,0 +1,45 @@
+{% extends "AppsServicios/plantilla_base_2.html" %}
+{% load static %}
+
+<!-- RESULTADO DE BUSQUEDA PARA SERVICIOS -->
+
+{% block blockname %}
+    <br>
+    <p class="text-center"><img class="img-fluid rounded mb-5 mb-lg-0" src="" alt="..." /></p>
+    <hr>
+    <br>
+    <br>
+    <h2 class="text-center"> BUSQUEDA </h2>
+
+    <p>Resultados de la busqueda para: {{nombre}}</p>
+        
+        {% if servicio %}
+        <center>
+        <table class="table table-striped">
+            <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Tiempo</th>
+      
+            </tr>
+                {% for resultado in servicio %}
+            <tr>
+                <td>{{resultado.nombre}}</td>
+                <td>{{resultado.tiempo}}</td>
+          
+                                                 
+                </td>
+            </tr>
+                {% endfor %}
+            </table>
+        </center>
+
+        {% else %}
+            <p class="text-center"><b>Sin resultados</b>
+            
+            </p>
+            {% endif %}
+    
+            <p><a href="{% url 'servicios' %}" class="btn btn-outline-primary" disabled> VOLVER </a></p>
+ 
+
+{% endblock blockname %}

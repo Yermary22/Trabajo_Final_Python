@@ -1,0 +1,80 @@
+{% extends "AppsServicios/plantilla_base_2.html" %}
+
+{% block blockname %}
+
+{% if borrado %}
+
+<div class="eliminado">Fue borrado exitosamente el servicio Id: {{ borrado }}</div>
+
+{% endif %}   
+
+<body>
+  <br>
+  <p class="text-center"><img class="rounded-circle" src="https://www.esg-global.com/hubfs/Blog_Images/JO/security_automation.jpeg#keepProtocol"height="400"alt="..." /></p>
+  <hr>
+  <br>
+  <h1 class="text-center"> PRINCIPALES SERVICIOS </h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p>Servicios </p>
+  <center>
+    <h4 class="text-center"> Buscar servicio </h4>
+          <form action="{% url 'buscar_servicio' %}" method="GET"> {% csrf_token %}
+            <input type="integer" name="nombre" />
+    </span>
+    <input type="submit" value="Buscar" />
+  </form>
+  <center>
+
+      <table class="table table-striped">
+          <tr>
+            <th>ID</th>
+              <th>Nombre</th>
+              <th>Costo</th>
+              <th>Tiempo</th>
+              <th>Editar o Eliminar</th>
+
+          </tr>
+          {% for servicio in servicio %}
+          <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{servicio.nombre}}</td>
+              <td>{{servicio.valor}}</td>
+              <td>{{servicio.tiempo}}</td>
+
+              <td>
+              
+                  <a style="color: black; text-decoration: none" href="{% url 'editar_servicio' servicio.id %}">Editar</a> |
+                  <a style="color: black; text-decoration: none" href="{% url 'eliminar_servicio' servicio.id %}">Eliminar</a> 
+                    
+              </td>
+              
+          </tr>
+              {% endfor %}
+      </table>
+  </center>
+
+  <p> Para agregar un nuevo servicio, click  <a style="text-decoration: none;" href="{% url 'servicio_formulario' %}" class="btn btn-outline-primary">AQUI</a> </p>
+  <hr>
+ 
+  <h1 class="text-center"><a href="{% url 'inicio' %}" 
+    class="btn btn-outline-primary" > VOLVER</a href ="{% url 'inicio' %}"></h1>
+  </center>
+  <h1 class="text-center"><a href="{% url 'contactos' %}" 
+    class="btn btn-outline-primary" > Ir a Contactos</a href ="{% url 'inicio' %}"></h1>
+  </center>
+
+</center>
+<h1 class="text-center"><a href="{% url 'tecnologias' %}" 
+  class="btn btn-outline-primary" > Ir a Tecnologias</a href ="{% url 'inicio' %}"></h1>
+</center>
+
+  <hr><hr>  
+</body>
+{% endblock blockname %} 
+</html>
+
+
+<!------------------------------------------------------------>
